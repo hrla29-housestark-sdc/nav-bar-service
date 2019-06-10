@@ -4,11 +4,12 @@ const helper = require('../database/helpers');
 require('../database/models');
 
 module.exports = {
-  // getDepartments: (req, res) => {
-  //   helper.getDepartments()
-  //     .then(data => res.status(200).send(data))
-  //     .catch(err => res.status(404).send(err))
-  // },
+  getDepartments: (req, res) => {
+    helper
+      .getDepartments()
+      .then(data => res.status(200).send(data))
+      .catch(err => res.status(404).send(err));
+  },
 
   getSearchResults: (req, res) => {
     const { query } = req.params;
@@ -31,6 +32,19 @@ module.exports = {
     helper
       .postProduct({ keywords, products })
       .then(() => res.status(200).send('posted '))
+      .catch(err => res.status(404).send(err));
+  },
+  update: (req, res) => {
+    const { _id } = req.params;
+    helper
+      .updateProduct(_id, req.body)
+      .then(() => res.status(200).send('Updated'))
+      .catch(err => res.status(404).send(err));
+  },
+  delete: (req, res) => {
+    helper
+      .deleteProduct()
+      .then(() => res.status(200).send('Deleted'))
       .catch(err => res.status(404).send(err));
   }
 };

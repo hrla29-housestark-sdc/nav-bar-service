@@ -1,14 +1,18 @@
 const router = require('express').Router();
 const controller = require('./controller');
 
-// router
-//   .route('/navs')
-//   .get(controller.getDepartments)
+router
+  .route('/navs')
+  .get(controller.getDepartments)
 router
   .route('/search')
   .get(controller.getAll)
-  .post(controller.post);
+  .post(controller.post)
+  .delete(controller.delete);
 
 router.route('/search/:query').get(controller.getSearchResults);
+
+router.route('/search/:_id').put(controller.update);
+
 
 module.exports = router;

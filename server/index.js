@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
-const router = require('./router');
+const mongo = require('./router');
+const psql = require('./Postgres/router.js');
 
 let app = express();
 
@@ -11,7 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // router
-app.use('/navbar', router);
+// app.use('/navbar/mongo', mongo);
+app.use('/navbar/psql', psql);
 
 // serving static client front-end files
 app.use(express.static(path.resolve(__dirname, '../client/dist')));
