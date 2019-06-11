@@ -18,5 +18,40 @@ module.exports = {
       .postSearch({ keyword, products })
       .then(() => console.log('testig post function'))
       .catch(err => console.error(err));
+  },
+  random: (req, res) => {
+    const letters = [
+      'a',
+      'b',
+      'c',
+      'd',
+      'e',
+      'f',
+      'g',
+      'h',
+      'i',
+      'j',
+      'k',
+      'l',
+      'm',
+      'n',
+      'o',
+      'p',
+      'q',
+      'r',
+      's',
+      't',
+      'u',
+      'v',
+      'w',
+      'x',
+      'y',
+      'z'
+    ];
+    const randomLetter = Math.floor(Math.random() * Math.floor(letters.length));
+    helper
+      .getResults(letters[randomLetter])
+      .then(data => res.status(200).send(data))
+      .catch(err => res.status(404).send(err));
   }
 };
