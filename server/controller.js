@@ -13,10 +13,10 @@ module.exports = {
 
   getSearchResults: (req, res) => {
     const { query } = req.params;
-    console.log(req.params);
     helper
       .getSearchResults(query)
       .limit(5)
+      // .explain('executionStats')
       .then(data => res.status(200).send(data))
       .catch(err => res.status(404).send(err));
   },
@@ -45,6 +45,42 @@ module.exports = {
     helper
       .deleteProduct()
       .then(() => res.status(200).send('Deleted'))
+      .catch(err => res.status(404).send(err));
+  },
+  random: (req, res) => {
+    const letters = [
+      'a',
+      'b',
+      'c',
+      'd',
+      'e',
+      'f',
+      'g',
+      'h',
+      'i',
+      'j',
+      'k',
+      'l',
+      'm',
+      'n',
+      'o',
+      'p',
+      'q',
+      'r',
+      's',
+      't',
+      'u',
+      'v',
+      'w',
+      'x',
+      'y',
+      'z'
+    ];
+    const randomLetter = Math.floor(Math.random() * Math.floor(letters.length));
+    helper
+      .getSearchResults(letters[randomLetter])
+      .limit(5)
+      .then(data => res.status(200).send(data))
       .catch(err => res.status(404).send(err));
   }
 };

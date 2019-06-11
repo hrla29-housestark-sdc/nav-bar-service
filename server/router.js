@@ -1,9 +1,7 @@
 const router = require('express').Router();
 const controller = require('./controller');
 
-router
-  .route('/navs')
-  .get(controller.getDepartments)
+router.route('/navs').get(controller.getDepartments);
 router
   .route('/search')
   .get(controller.getAll)
@@ -12,7 +10,8 @@ router
 
 router.route('/search/:query').get(controller.getSearchResults);
 
-router.route('/search/:_id').put(controller.update);
+router.route('/random').get(controller.random);
 
+router.route('/search/:_id').put(controller.update);
 
 module.exports = router;
