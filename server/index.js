@@ -13,7 +13,7 @@ app.use(express.json());
 
 // router
 app.use('/navbar/mongo', mongo);
-app.use('/navbar/psql', psql);
+// app.use('/navbar/psql', psql);
 
 // serving static client front-end files
 app.use(express.static(path.resolve(__dirname, '../client/dist')));
