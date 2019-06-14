@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 mongoose
   .connect(
-    'mongodb://ec2-54-193-38-138.us-west-1.compute.amazonaws.com:27017/navigation',
+    'mongodb://ec2-13-57-8-25.us-west-1.compute.amazonaws.com:27017/navigation',
     {
       useNewUrlParser: true
     }
