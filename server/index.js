@@ -18,8 +18,8 @@ app.use('/navbar/mongo', mongo);
 // serving static client front-end files
 app.use(express.static(path.resolve(__dirname, '../client/dist')));
 
-app.use('/loaderio-89015195599096ff0adc825f104bf6e2', (req, res) => {
-  res.status(200).send('loaderio-89015195599096ff0adc825f104bf6e2');
+app.use('/loaderio-0bd71f43200a5e29a059ecf6e822197b', (req, res) => {
+  res.status(200).send('loaderio-0bd71f43200a5e29a059ecf6e822197b');
 });
 
 // establish port to listen on
