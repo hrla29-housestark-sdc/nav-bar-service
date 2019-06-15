@@ -9,5 +9,3 @@ mongoose
   )
   .then(() => console.log('Connection to mongoDB is successful!'))
   .catch(err => console.log(err));
-
-//mongodb://mongo:27017/navigation
