@@ -1,9 +1,9 @@
+require('newrelic');
 const express = require('express');
 const path = require('path');
 // const morgan = require('morgan');
 const mongo = require('./router');
 const psql = require('./Postgres/router.js');
-require('newrelic');
 
 let app = express();
 
