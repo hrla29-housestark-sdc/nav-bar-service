@@ -17,6 +17,6 @@ module.exports = {
   },
   getAllSearchResults: () => models.Keyword.find(),
   postProduct: data => models.Keyword.create(data),
-  updateProduct: data => models.Keyword.findOneAndUpdate(data),
-  deleteProduct: () => models.Keyword.deleteMany({})
+  updateProduct: data => models.Keyword.findOneAndUpdate(data)
+  // deleteProduct: () => models.Keyword.deleteMany({})
 };
