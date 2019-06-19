@@ -11,10 +11,10 @@ module.exports = {
       .catch(err => res.status(404).send(err));
   },
   getSearchResults: (req, res) => {
-    const { query } = req.params;
+    const { _id } = req.params;
 
     helper
-      .getSearchResults(query)
+      .getSearchResults(_id)
       .limit(5)
       // .explain('executionStats')
       .then(data => res.status(200).send(data))
