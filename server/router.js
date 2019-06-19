@@ -9,7 +9,7 @@ router
   .delete(controller.delete);
 
 // router.route('/search/:query').get(controller.getSearchResults);
-router.route('/search/:_id').get(controller.getSearchResults);
+router.route('/search/:query').get(controller.getSearchResults);
 
 router.route('/random').get(controller.random);
 
