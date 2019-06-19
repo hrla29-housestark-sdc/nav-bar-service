@@ -31,6 +31,7 @@ const productSchema = new mongoose.Schema({
 });
 
 const keywordSchema = new mongoose.Schema({
+  _id: Number,
   keyword: String,
   products: [productSchema]
 });

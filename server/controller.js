@@ -10,20 +10,29 @@ module.exports = {
       .then(data => res.status(200).send(data))
       .catch(err => res.status(404).send(err));
   },
-
   getSearchResults: (req, res) => {
-    const { query } = req.params;
+    const { _id } = req.params;
     helper
-      .getSearchResults(query)
+      .getSearchResults(_id)
       .limit(5)
       // .explain('executionStats')
       .then(data => res.status(200).send(data))
       .catch(err => res.status(404).send(err));
   },
+
+  // getSearchResults: (req, res) => {
+  //   const { query } = req.params;
+  //   helper
+  //     .getSearchResults(query)
+  //     .limit(5)
+  //     // .explain('executionStats')
+  //     .then(data => res.status(200).send(data))
+  //     .catch(err => res.status(404).send(err));
+  // },
   getAll: (req, res) => {
     helper
       .getAllSearchResults()
-      .limit(5)
+      .limit(50)
       .then(data => res.status(200).send(data))
       .catch(err => res.status(404).send(err));
   },

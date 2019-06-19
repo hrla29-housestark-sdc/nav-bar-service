@@ -31,6 +31,7 @@ const generateKeywords = () => {
 const keywords = generateKeywords();
 const productName = generateProductName();
 const images = generateImages();
+let counter = 0;
 
 const generateData = () => {
   const random1 = Math.floor(Math.random() * Math.floor(images.length));
@@ -43,6 +44,7 @@ const generateData = () => {
   const keyword = keywords[random1];
 
   const data = {
+    _id: counter++,
     keyword: keyword,
     products: [
       {
@@ -62,19 +64,23 @@ const generateData = () => {
   return data;
 };
 
+// console.log(generateData());
+// console.log(generateData());
+// console.log('counter', counter);
 let productData = [];
 
-for (let i = 0; i < 10000; i++) {
+for (let i = 0; i < 1000; i++) {
   productData.push(generateData());
 }
 
+console.log(productData);
 // console.log(productData);
 
 let writeStream = fs.createWriteStream(
   path.resolve(__dirname, './productData.json')
 );
 
-// console.time('Finished generating data');
+console.time('Finished generating data');
 const createData = async () => {
   for (let i = 1; i <= 10000000; i++) {
     if (

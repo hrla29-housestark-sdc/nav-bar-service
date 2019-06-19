@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 // const morgan = require('morgan');
 const mongo = require('./router');
-const psql = require('./Postgres/router.js');
+// const psql = require('./Postgres/router.js');
 
 let app = express();
 
