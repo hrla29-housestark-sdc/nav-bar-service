@@ -1,12 +1,12 @@
 const helper = require('../database/helpers');
-const client = require('redis').createClient();
+// const client = require('redis').createClient();
 
 // connect server to DB+models
 require('../database/models');
 
-client.on('error', err => {
-  console.log('Failed to connect to REDIS', err);
-});
+// client.on('error', err => {
+//   console.log('Failed to connect to REDIS', err);
+// });
 
 module.exports = {
   getDepartments: (req, res) => {
@@ -18,25 +18,25 @@ module.exports = {
   getSearchResults: (req, res) => {
     const { _id } = req.params;
 
-    client.get(_id, (err, data) => {
-      if (data) {
-        res.status(200).send(JSON.parse(data));
-      } else {
-        helper
-          .getSearchResults(_id)
-          .then(result => {
-            client.setex(_id, 60, JSON.stringify(result));
-            res.status(200).send(result);
-          })
-          .catch(err => res.status(404).send(err));
-      }
-    });
-    // helper
-    //   .getSearchResults(_id)
-    //   .limit(5)
-    //   // .explain('executionStats')
-    //   .then(data => res.status(200).send(data))
-    //   .catch(err => res.status(404).send(err));
+    // client.get(_id, (err, data) => {
+    //   if (data) {
+    //     res.status(200).send(JSON.parse(data));
+    //   } else {
+    //     helper
+    //       .getSearchResults(_id)
+    //       .then(result => {
+    //         client.setex(_id, 60, JSON.stringify(result));
+    //         res.status(200).send(result);
+    //       })
+    //       .catch(err => res.status(404).send(err));
+    //   }
+    // });
+    helper
+      .getSearchResults(_id)
+      .limit(5)
+      // .explain('executionStats')
+      .then(data => res.status(200).send(data))
+      .catch(err => res.status(404).send(err));
   },
 
   // getSearchResults: (req, res) => {
