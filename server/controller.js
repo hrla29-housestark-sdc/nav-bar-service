@@ -1,8 +1,8 @@
 const helper = require('../database/helpers');
+const client = require('redis').createClient();
 
 // connect server to DB+models
 require('../database/models');
-const client = require('redis').createClient();
 
 client.on('error', err => {
   console.log('Failed to connect to REDIS', err);
